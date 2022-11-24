@@ -1,0 +1,51 @@
+{
+    "$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
+    "name": "asl",
+    "patterns": [
+        { "include": "#keywords" },
+        { "include": "#strings" },
+        { "include": "#comments" }
+    ],
+    "repository": {
+        "keywords": {
+            "patterns": [
+                {
+                    "comment": "control flow keywords",
+                    "name": "keyword.control.asl",
+                    "match": "\\b(if|elsif|else|then|while|do|for|to|downto|return|assert|repeat|until|try|catch|case|of|when)\\b"
+                },
+                {
+                    "comment": "function calls & definitions",
+                    "name": "keyword.function.asl",
+                    "match": "\\b(.*?)\\((.*?)\\)\\b"
+                },
+                {
+                    "comment": "builtin types",
+                    "name": "keyword.type.asl",
+                    "match": "\\b(bits\\(.+?\\)|boolean|integer|bit|constant|array|real|enumeration|type)\\b"
+                }
+            ]
+        },
+        "comments": {
+            "patterns": [
+                {
+                    "comment": "inline comment",
+                    "name": "comment.asl",
+                    "match": "//(.*?)\\n"
+                }
+            ]
+        },
+        "strings": {
+            "name": "string.quoted.asl",
+            "begin": "('|\")",
+            "end": "('|\")",
+            "patterns": [
+                {
+                    "name": "constant.character.W.asl",
+                    "match": "\\\\."
+                }
+            ]
+        }
+    },
+    "scopeName": "source.asl"
+}

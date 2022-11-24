@@ -1,0 +1,25 @@
+{
+  "name": "arm-asl-server",
+  "displayName": "arm-asl-server",
+  "description": "Language server for ARM64 Architecture Specification Language",
+  "version": "0.0.1",
+  "engines": {
+    "vscode": "^1.73.0"
+  },
+  "categories": [
+    "Programming Languages"
+  ],
+  "contributes": {
+    "languages": [{
+      "id": "asl",
+      "aliases": ["asl", "asl"],
+      "extensions": ["asl"],
+      "configuration": "./language-configuration.json"
+    }],
+    "grammars": [{
+      "language": "asl",
+      "scopeName": "source.asl",
+      "path": "./syntaxes/asl.tmLanguage.json"
+    }]
+  }
+}
