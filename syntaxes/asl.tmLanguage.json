@@ -56,7 +56,7 @@
                 {
                     "comment": "comparison binary operator",
                     "name": "keyword.comparison.asl",
-                    "match": "\\s(==|!=||<=||>=)\\s"
+                    "match": "\\s(==|!=|<=|>=)\\s"
                 },
                 {
                     "comment": "bit binary operators",
@@ -85,7 +85,8 @@
                 {
                     "comment": "multi-line comment",
                     "name": "comment.multiline.asl",
-                    "match": "/\\*([.\\n]*?)\\*/"
+                    "begin": "/\\*",
+                    "end": "\\*/"
                 }
             ]
         },
