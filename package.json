@@ -3,7 +3,7 @@
   "displayName": "arm-asl-server",
   "description": "Language server for ARM64 Architecture Specification Language",
   "author": "Andrew Brown",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "repository": {
     "type": "git",
     "url": "https://github.com/andrewj-brown/asl-language-server" 
