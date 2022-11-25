@@ -3,26 +3,75 @@
     "name": "asl",
     "patterns": [
         { "include": "#keywords" },
-        { "include": "#strings" },
-        { "include": "#comments" }
+        { "include": "#entities" },
+        { "include": "#operators" },
+        { "include": "#comments" },
+        { "include": "#literals"},
+        { "include": "#arrays" }
     ],
     "repository": {
         "keywords": {
             "patterns": [
                 {
-                    "comment": "control flow keywords",
+                    "comment": "regular keywords (types, control flow)",
                     "name": "keyword.control.asl",
-                    "match": "\\b(if|elsif|else|then|while|do|for|to|downto|return|assert|repeat|until|try|catch|case|of|when)\\b"
+                    "match": "\\b(array|assert|bits|case|catch|constant|do|downto|else|elsif|enumeration|for|if|is|of|otherwise|record|repeat|return|then|throw|to|try|type|typeof|until|when|while)\\b"
                 },
                 {
-                    "comment": "function calls & definitions",
-                    "name": "keyword.function.asl",
-                    "match": "\\b(.*?)\\((.*?)\\)\\b"
-                },
-                {
-                    "comment": "builtin types",
+                    "comment": "underscore keywords",
                     "name": "keyword.type.asl",
-                    "match": "\\b(bits\\(.+?\\)|boolean|integer|bit|constant|array|real|enumeration|type)\\b"
+                    "match": "\\b(__ExceptionTaken|__NOP|__UNALLOCATED|__UNPREDICTABLE|__array|__builtin|__conditional|__config|__decode|__encoding|__event|__execute|__field|__function|__guard|__instruction|__instruction_set|__map|__newmap|__newevent|__operator1|__operator2|__opcode|__postdecode|__readwrite|__register|__unpredictable_unless|__write)\\b"
+                }, 
+                {
+                    "comment": "shouty keywords (bit macros, constants)",
+                    "name": "keyword.boolean.asl",
+                    "match": "\\b(AND|CONSTRAINED_UNPREDICTABLE|DIV|EOR|IMPLEMENTATION_DEFINED|IN|IFF|IMPLIES|MOD|NOT|OR|QUOT|REM|SEE|UNDEFINED|UNKNOWN|UNPREDICTABLE)\\b"
+                },
+                {
+                    "comment": "Note that all non-bits types are actually defined in /mra_tools/prelude.asl, including boolean, integer, real, etc."
+                }
+            ]
+        },
+        "entities": {
+            "patterns": [
+                {
+                    "comment": "function calls/defs",
+                    "name": "entity.name.function.asl",
+                    "match": "\\b\\w+\\((?=(.*?)\\)[\\s;])"
+                }
+            ]
+        },
+        "operators": {
+            "patterns": [
+                {
+                    "comment": "binding operator",
+                    "name": "keyword.bind.asl",
+                    "match": "\\s=\\s"
+                },
+                {
+                    "comment": "boolean binary operator",
+                    "name": "keyword.bool.asl",
+                    "match": "\\s(\\|\\||&&)\\s"
+                },
+                {
+                    "comment": "comparison binary operator",
+                    "name": "keyword.comparison.asl",
+                    "match": "\\s(==|!=||<=||>=)\\s"
+                },
+                {
+                    "comment": "bit binary operators",
+                    "name": "keyword.bit.asl",
+                    "match": "\\b(AND|NOT|OR)\\b"
+                },
+                {
+                    "comment": "boolean not",
+                    "name": "keyword.not.asl",
+                    "match": "\\s!(?=\\w)"
+                },
+                {
+                    "comment": "arithmetic operator",
+                    "name": "keyword.math.asl",
+                    "match": "\\s(\\+|\\-)\\s"
                 }
             ]
         },
@@ -30,21 +79,54 @@
             "patterns": [
                 {
                     "comment": "inline comment",
-                    "name": "comment.asl",
+                    "name": "comment.inline.asl",
                     "match": "//(.*?)\\n"
+                },
+                {
+                    "comment": "multi-line comment",
+                    "name": "comment.multiline.asl",
+                    "match": "/\\*([.\\n]*?)\\*/"
                 }
             ]
         },
-        "strings": {
-            "name": "string.quoted.asl",
-            "begin": "('|\")",
-            "end": "('|\")",
+        "literals": {
             "patterns": [
                 {
-                    "name": "constant.character.W.asl",
-                    "match": "\\\\."
+                    "comment": "integer literal",
+                    "name": "constant.numeric.int.asl",
+                    "match": "\\b[0-9]+?\\b"
+                },
+                {
+                    "comment": "real literal",
+                    "name": "constant.numeric.real.asl",
+                    "match": "\\b[0-9]+?\\.[0-9]+?\\b"
+                },
+                {
+                    "comment": "hex literal",
+                    "name": "constant.numeric.hex.asl",
+                    "match": "\\b0x[0-9a-fA-F_]+?\\b"
+                },
+                {
+                    "comment": "mask literal",
+                    "name": "string.mask.asl",
+                    "match": "\\'[01x ]*?\\'"
+                },
+                {
+                    "coment": "bit literal",
+                    "name": "string.bit.asl",
+                    "match": "\\'[01 ]*?\\'"
+                },
+                {
+                    "comment": "string literal",
+                    "name": "string.text.asl",
+                    "match": "\"[^\"]*?\""
                 }
             ]
+        },
+        "arrays": {
+            "name": "array.literal.asl",
+            "begin": "{",
+            "end": "}"
         }
     },
     "scopeName": "source.asl"

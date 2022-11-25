@@ -2,7 +2,12 @@
   "name": "arm-asl-server",
   "displayName": "arm-asl-server",
   "description": "Language server for ARM64 Architecture Specification Language",
+  "author": "Andrew Brown",
   "version": "0.0.1",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/andrewj-brown/asl-language-server" 
+  },
   "engines": {
     "vscode": "^1.73.0"
   },
@@ -11,13 +16,13 @@
   ],
   "contributes": {
     "languages": [{
-      "id": "asl",
-      "aliases": ["asl", "asl"],
-      "extensions": ["asl"],
+      "id": "arm-asl",
+      "aliases": ["ASL", "asl"],
+      "extensions": [".asl"],
       "configuration": "./language-configuration.json"
     }],
     "grammars": [{
-      "language": "asl",
+      "language": "arm-asl",
       "scopeName": "source.asl",
       "path": "./syntaxes/asl.tmLanguage.json"
     }]
