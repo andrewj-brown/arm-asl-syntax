@@ -1,7 +1,9 @@
 {
     "comments": {
-        // symbol used for single line comment. Remove this entry if your language does not support line comments
+        // symbol used for single line comment
         "lineComment": "//",
+        // delineators used for multiline comments
+        "blockComment": ["/*", "*/"]
     },
     // symbols used as brackets
     "brackets": [

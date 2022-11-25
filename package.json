@@ -3,28 +3,47 @@
   "displayName": "arm-asl-server",
   "description": "Language server for ARM64 Architecture Specification Language",
   "author": "Andrew Brown",
-  "version": "0.0.1",
+  "version": "0.0.2",
+  "categories": [
+    "Programming Languages"
+  ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/andrewj-brown/asl-language-server" 
+    "url": "https://github.com/andrewj-brown/asl-language-server"
   },
   "engines": {
     "vscode": "^1.73.0"
   },
-  "categories": [
-    "Programming Languages"
-  ],
+  "dependencies": {
+    "@types/node": "^18.11.9",
+    "@types/vscode": "^1.73.1",
+    "@vscode/test-electron": "^2.2.0",
+    "vscode-languageclient": "^7.0.0"
+  },
   "contributes": {
-    "languages": [{
-      "id": "arm-asl",
-      "aliases": ["ASL", "asl"],
-      "extensions": [".asl"],
-      "configuration": "./language-configuration.json"
-    }],
-    "grammars": [{
-      "language": "arm-asl",
-      "scopeName": "source.asl",
-      "path": "./syntaxes/asl.tmLanguage.json"
-    }]
-  }
+    "languages": [
+      {
+        "id": "arm-asl",
+        "aliases": [
+          "ASL",
+          "asl"
+        ],
+        "extensions": [
+          ".asl",
+          ".asl.orig"
+        ],
+        "configuration": "./language-configuration.json"
+      }
+    ],
+    "grammars": [
+      {
+        "language": "arm-asl",
+        "scopeName": "source.asl",
+        "path": "./syntaxes/asl.tmLanguage.json"
+      }
+    ]
+  },
+  "activationEvents": [
+    "onLanguage:arm-asl"
+  ]
 }
