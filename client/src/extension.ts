@@ -12,26 +12,18 @@ import {
 let client: LanguageClient;
 
 export function activate(context: vscode.ExtensionContext) {
-    return;
-
-	// The server is implemented in node
+    console.log("Activating arm-asl client");
+    
 	const serverModule = context.asAbsolutePath(
-		path.join('server', 'bin', 'main.ml')
+		path.join('server', '_build', 'default', 'bin', 'main.exe')
 	);
-	// The debug options for the server
-	// --inspect=6009: runs the server in Node's Inspector mode so VS Code can attach to the server for debugging
-	const debugOptions = { execArgv: ['--nolazy', '--inspect=6009'] };
 
-	// If the extension is launched in debug mode then the debug server options are used
-	// Otherwise the run options are used
+	// exec the server using dune
 	const serverOptions: ServerOptions = {
-		run: { module: serverModule, transport: TransportKind.ipc },
-		debug: {
-			module: serverModule,
-			transport: TransportKind.ipc,
-			options: debugOptions
-		}
-	};
+        command: "dune",
+        args: ["exec", "--action-stdout-on-success=swallow", "--action-stderr-on-success=must-be-empty", serverModule],
+        transport: TransportKind.stdio
+    }
 
 	// Options to control the language client
 	const clientOptions: LanguageClientOptions = {

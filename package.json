@@ -7,10 +7,14 @@
   "categories": [
     "Programming Languages"
   ],
+
   "repository": {
     "type": "git",
     "url": "https://github.com/andrewj-brown/asl-language-server"
   },
+
+  "main": "./client/out/extension.js",
+
   "engines": {
     "vscode": "^1.73.0"
   },
@@ -18,8 +22,10 @@
     "@types/node": "^18.11.9",
     "@types/vscode": "^1.73.1",
     "@vscode/test-electron": "^2.2.0",
+    "typescript": "^4.9.3",
     "vscode-languageclient": "^7.0.0"
   },
+  
   "contributes": {
     "languages": [
       {
@@ -39,7 +45,7 @@
       {
         "language": "arm-asl",
         "scopeName": "source.asl",
-        "path": "./syntaxes/asl.tmLanguage.json"
+        "path": "./client/syntaxes/asl.tmLanguage.json"
       }
     ]
   },
