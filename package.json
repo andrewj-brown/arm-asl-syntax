@@ -1,12 +1,12 @@
 {
-  "name": "arm-asl-server",
-  "displayName": "arm-asl-server",
-  "description": "Language server for ARM64 Architecture Specification Language",
+  "name": "arm-asl-syntax",
+  "displayName": "arm-asl-syntax",
+  "description": "Syntax highlighting for ARM64 Architecture Specification Language",
   "author": "Andrew Brown",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "repository": {
     "type": "git",
-    "url": "https://github.com/andrewj-brown/asl-language-server" 
+    "url": "https://github.com/andrewj-brown/arm-asl-syntax" 
   },
   "engines": {
     "vscode": "^1.73.0"
